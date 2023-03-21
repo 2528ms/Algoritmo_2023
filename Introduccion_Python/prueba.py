@@ -1,4 +1,5 @@
 
+""""
 #!TIPOS DE DATOS int float str bool None
 num = None
 
@@ -76,5 +77,28 @@ lista_num.pop(2)
 lista_num.reverse()
 for i in range(len(lista_num)):
     print('elemento en indice', i, lista_num[i])
+"""
+#! FUNCIONES Clase 20/03
+num1 = 13
+def mi_funcion():
+    return num1, "hola"
 
-#! FUNCIONES
+tupla = mi_funcion()
+
+print(tupla) #!Cuando las funciones devuelven mas de un valor, se lo llama Tupla (objeto)
+
+#!Cuando le pasamos como parametros, parametros primitivos estos no se modifican dentro de la funcion
+#!solo modifica los paramatros que noson primitivos lista, tuplas, etc.
+
+def funcion2(list):
+    list.pop()  #!.pop quita un valor a la lista, si no se le da un indice quita el ultimo valor
+    return list
+
+
+valores = [1,2,3,4]
+
+funcion2(valores)
+
+print(valores)
+
+
