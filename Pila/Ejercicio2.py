@@ -1,4 +1,4 @@
-from pila_ejemplo import Pila
+from pilaClass import Pila
 from random import randint
 
 stack = Pila()
