@@ -3,19 +3,31 @@ Ejercicio: Utilizando operaciones de cola y pila, invertir el contenido de una c
 se deberia sacar(eliminarlo) desde una cola ya cargada, el valor de la primera pocicion e insertarlo en una pila,
 luego sacar el valor que esta en la cima de la pila e insertarlo nuevamente en la cola
 """
+#Import file since other folder
+import sys #Import library 'sys'
+sys.path.append('/home/ms/Algoritmo_2023_MS/Pila') #add path the folder
+import pilaClass #select file that contain of folder added
 
-#from AlGORITMO_2023_MS.Pila.pilaClass import Pila
-import Pila.pilaClass
 from colaClass import Cola
 from random import randint
 
 cola = Cola()
-pila = Pila()
+pila = pilaClass.Pila()
 
-for i in range(10):
+for i in range(4):
     valor = randint(0,20)
     cola.arrive(valor)
     print(valor)
     
+print("***************")
+while cola.size() > 0:
+    valor = cola.atention()
+    pila.push(valor)
+    print(valor)
 
+print("***************")
+while pila.size() > 0:
+    valor = pila.pop()
+    cola.arrive(valor)
+    print(valor)
 
