@@ -14,9 +14,9 @@ word = input("enter a word ")
 for i in range(len(word)):
     value = word[i]
     cola.arrive(value)
-    print(value)
+    #print(value)
 
-print('***************************')    
+#print('***************************')    
 size = cola.size()
 cont = 0
 
@@ -25,9 +25,9 @@ while cont < size:
     cola.move_to_end()
     pila.push(value)
     cont += 1
-    print(value)
+    #print(value)
 
-print("*************************************")
+#print("*************************************")
 palindroma = True
 while pila.size() > 0:
     valueStack = pila.pop()
