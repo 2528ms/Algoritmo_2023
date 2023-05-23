@@ -69,15 +69,19 @@ class Lista():
         for value in self.__elements:
             print(value)
 
-    def order_by(self, criterio=None):
-        def criterio_nombre(valor):
-            return valor.nombre
+    def order_by(self, criterio=None, reverse=False):
+        dic_atributos = self.__elements[0].__dict__
+        if criterio in dic_atributos:
+            def func_criterio(valor):
+                return valor.__dict__[criterio]
 
-        self.__elements.sort(key=criterio_comparacion(criterio=criterio))
+            self.__elements.sort(key=func_criterio, reverse=reverse)
+        else:
+            print('no se puede ordenar por este criterio')
 
-    def get_element_by_value(self, value):
+    def get_element_by_value(self, value, criterio = None):
          return_value = None
-         pos = self.search(value)
+         pos = self.search(value, criterio)
 
          if pos is not None:
              return_value = self.__elements[pos]
