@@ -29,14 +29,15 @@ apps = [{'hora':'15:00','app':'Facebook','msj':'nueva solicitud de amistad de Py
          {'hora':'11:46','app':'Instagram','msj':'java ha subido una nueva historia'}]
 
 
-for i in range(0,len(apps)):
-    notificaciones.arrive(apps[i])
+for value in apps:
+  notificaciones.arrive(value)
     
 
 for i in range(1,len(apps)):
   if notificaciones.on_front()['app'] == 'Facebook':
     notificaciones.atention()
 
+print('*****Notificaciones de Twitter que contiene la palabra Python en el msj ************')
 for i in range(1,notificaciones.size()):
   if notificaciones.on_front()['app'] == 'Twitter' and notificaciones.on_front()['msj'].find('Python') != -1:
     print(notificaciones.on_front())
@@ -49,7 +50,6 @@ for i in range(1,notificaciones.size()):
   notificaciones.move_to_end()
 
 print('*****Pila de notificaciones entre las 11:43 y 15:57 ************')
-print(pilaNotificaciones.size())
 while pilaNotificaciones.size() > 0:
    print(pilaNotificaciones.pop())
 
