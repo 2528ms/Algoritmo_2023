@@ -1,3 +1,5 @@
+# 2. Eliminar de una pila todos los elementos impares, es decir que en la misma solo queden nú-
+# meros pares.
 from pilaClass import Pila
 from random import randint
 

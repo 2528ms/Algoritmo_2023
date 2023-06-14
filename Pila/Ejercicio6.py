@@ -1,3 +1,4 @@
+# 6. Leer una palabra y visualizarla en forma inversa.
 from pilaClass import Pila
 
 cadena = input('ingrese palabra: ')
