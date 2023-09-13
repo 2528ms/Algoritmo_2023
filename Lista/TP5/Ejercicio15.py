@@ -19,10 +19,10 @@
 # deberán mostrar los datos de ambos;
 
 import sys #Import library 'sys'
-sys.path.append('/home/ms/Algoritmo_2023_MS/Lista_de_Lista') 
-import Lista 
+sys.path.append('/home/ms/Algoritmo_2023_MS/Lista/Lista_de_Lista') 
+import lista_lista 
 
-#from lista_lista import Lista as ListaDeLista
+from lista_lista import Lista as ListaDeLista
 from random import randint
 
 class Entrenador():

@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./Pila"
+        "./Pila",
+        "./Lista/Lista_de_Lista"
     ]
 }
