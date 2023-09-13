@@ -15,6 +15,8 @@ g. mostrar toda la información de Flash y Star-Lord;
 h. listar los superhéroes que comienzan con la letra B, M y S;
 i. determinar cuántos superhéroes hay de cada casa de comic.
 """
+import sys #Import library 'sys'
+sys.path.append('/home/ms/Algoritmo_2023_MS/Lista') 
 from listaClass import Lista
 
 #Se crea clase superheroes

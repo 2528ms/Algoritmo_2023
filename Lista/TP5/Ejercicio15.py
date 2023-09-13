@@ -18,7 +18,11 @@
 # como del Pokémon deben ser ingresados; además si el entrenador tiene al Pokémon se
 # deberán mostrar los datos de ambos;
 
-from lista_lista import Lista as ListaDeLista
+import sys #Import library 'sys'
+sys.path.append('/home/ms/Algoritmo_2023_MS/Lista_de_Lista') 
+import Lista 
+
+#from lista_lista import Lista as ListaDeLista
 from random import randint
 
 class Entrenador():
