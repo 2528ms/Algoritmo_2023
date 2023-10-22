@@ -6,29 +6,36 @@
 # e. determinar la cantidad de ocurrencias de un elemento en el árbol;
 # f. contar cuántos números pares e impares hay en el árbol.
 
-from binaryTree import BinaryTree
+from TP5.binaryTree import BinaryTree
 from random import randint
 
-arbol = BinaryTree()
-test = []
-for i in range(15):
+arbol = BinaryTree() #instanciamos un nuevo Tree
+test = [] 
+
+#Insertamos 20 numeros enteros entre el 0 y el 100
+for i in range(6):
     value = randint(0,100)
     test.append(value)
     arbol.insert_node(value)
 
 
-print()
+print('Valores insertados') 
 for elemento in test:
     print(elemento)
-print('Barrido In Orden')
+print('Barrido In Orden - Imprime los valores de forma descendiente')
 arbol.inorden()
 print()
+print('Valores insertados') 
 for elemento in test:
     print(elemento)
 print('Barrido pre Orden')
 arbol.preorden()
+print(test)
 print()
+print('Valores insertados') 
 for elemento in test:
     print(elemento)
-print('Barrido post Orden')
+print('Barrido post Orden - Imprime los valores de forma ascendiente')
 arbol.postorden()
+
+print(test)

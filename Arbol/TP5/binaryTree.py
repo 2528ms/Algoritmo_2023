@@ -11,7 +11,7 @@ def get_value_from_file(file_name, index):
     return line_split
 
 class NodeTree():
-
+    #Value = valor inicial del nodo (indice), other_value = almacena informacion sobre el nodo
     def __init__(self, value, other_values=None):
         self.value = value
         self.other_values = other_values
@@ -74,6 +74,7 @@ class BinaryTree:
                     root = self.double_rotation(root, False)
         return root
 
+    #Insertar un nuevo nodo
     def insert_node(self, value, other_values=None):
 
         def __insertar(root, value, other_values):
@@ -103,6 +104,9 @@ class BinaryTree:
                     cola_tree.arrive(node.right)
 
     def inorden(self):
+        # Barrido inorden, primero se recorren los nodos del subárbol izquierdo en inorden, luego se visita el nodo raíz y,
+        # por ultimo los nodos del subárbol derecho en inorden. El orden de visita es izquierdo - raíz - derecho. 
+        # un recorrido inorden produce los valores en orden ascendente.
         def __inorden(root):
             if root is not None:
                 __inorden(root.left)
@@ -142,13 +146,26 @@ class BinaryTree:
 
         __inorden_s_v(self.root, is_hero)
 
+    # def inorden_start_with(self, cadena):
+    #     def __inorden_start_with(root, cadena):
+    #         if root is not None:
+    #             __inorden_start_with(root.left, cadena)
+    #             #if root.other_values is True and root.value.upper().startswith(cadena):
+    #             if root.value.upper().startswith(cadena):
+    #                 print(root.value)
+    #             __inorden_start_with(root.right, cadena)
+
+    #     __inorden_start_with(self.root, cadena)
+    
     def inorden_start_with(self, cadena):
         def __inorden_start_with(root, cadena):
             if root is not None:
                 __inorden_start_with(root.left, cadena)
-                if root.other_values is True and root.value.upper().startswith(cadena):
+                if root.value.upper().startswith(cadena.upper()):
                     print(root.value)
                 __inorden_start_with(root.right, cadena)
+
+        __inorden_start_with(self.root, cadena)
 
     def inorden_start_with_jedi(self, cadena):
         def __inorden_start_with_jedi(root, cadena):
@@ -161,6 +178,9 @@ class BinaryTree:
         __inorden_start_with_jedi(self.root, cadena)
 
     def postorden(self):
+        # Barrido postorden, primero se recorren los nodos del subárbol izquierdo en postorden, 
+        # luego se recorren los nodos del subárbol derecho en postorden y, por ultimo nodo raíz. 
+        # El orden de visita es izquierdo - derecho - raíz.
         def __postorden(root):
             if root is not None:
                 __postorden(root.right)
@@ -170,6 +190,9 @@ class BinaryTree:
         __postorden(self.root)
 
     def preorden(self):
+        # Barrido preorden, primero se visita el nodo raíz, luego se recorren los nodos del subárbol 
+        # izquierdo en preorden y, finalmente, se recorren los nodos del subárbol derecho en preorden.
+        #El orden de visita es raíz - izquierdo - derecho.
         def __preorden(root):
             if root is not None:
                 print(root.value, root.height)
@@ -245,6 +268,18 @@ class BinaryTree:
             return count
 
         return __contar(self.root, value)
+    
+    def contar_nodo(self):
+        def __contar_nodo(root):
+            count = 0
+            if root is None:
+                return 0
+            count = 1
+            count += __contar_nodo(root.left)
+            count += __contar_nodo(root.right)
+            return count
+
+        return __contar_nodo(self.root)
     
     def contar_heroes(self):
         def __contar_heroes(root):
