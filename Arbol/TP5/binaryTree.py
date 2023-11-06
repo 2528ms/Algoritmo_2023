@@ -97,7 +97,6 @@ class BinaryTree:
             while cola_tree.size() > 0:
                 node = cola_tree.atention()
                 print(node.value)
-                # a = input()
                 if node.left is not None:
                     cola_tree.arrive(node.left)
                 if node.right is not None:
@@ -145,17 +144,6 @@ class BinaryTree:
                 __inorden_s_v(root.right, is_hero)
 
         __inorden_s_v(self.root, is_hero)
-
-    # def inorden_start_with(self, cadena):
-    #     def __inorden_start_with(root, cadena):
-    #         if root is not None:
-    #             __inorden_start_with(root.left, cadena)
-    #             #if root.other_values is True and root.value.upper().startswith(cadena):
-    #             if root.value.upper().startswith(cadena):
-    #                 print(root.value)
-    #             __inorden_start_with(root.right, cadena)
-
-    #     __inorden_start_with(self.root, cadena)
     
     def inorden_start_with(self, cadena):
         def __inorden_start_with(root, cadena):
