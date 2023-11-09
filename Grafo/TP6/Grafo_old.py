@@ -1,6 +1,6 @@
 # from cola import Cola
 # from pila import Pila
-from Heap_min import Heap
+from Heap_min_old import Heap
 from lista import Lista as ListaArista
 
 import sys #Import library 'sys'
