@@ -42,13 +42,27 @@ for ambiente in ambientes:
     for destino in adyacentes:
         metros = randint(1,15)
         home.insert_arist(origen,destino,metros)
-        
-# home.barrido()
-#Punto C
-# arbol_expancion_min = home.kruskal()
-# print(arbol_expancion_min)
+print('**** DATOS DEL GRAFO - PUNTO A y B ****')
+home.barrido()
 
-#Punto D
+print('**** PUNTO C *****')
+arbol_expansion_min = home.kruskal()
+total_metos = 0
+print(f'El arbol rbol de expansion min del grafo es: {arbol_expansion_min}')
+print()
+print('cada nodo del arbol es:')
+for arbol in arbol_expansion_min:
+    for nodo in arbol.split(';'):
+        #print(nodo) #formato del nodo [origen-destino-peso]
+        datos = nodo.split('-')
+        print(datos)
+        total_metos = total_metos + int(datos[2])
+print()
+print(f'El todal de metros de cable para conectar todos los ambientes es {total_metos} mts')
+print()
+
+
+print('**** PUNTO D *****')
 origen = 'habitacion 1'
 destino = 'sala de estar'
 pos_origen = home.search_vertice(origen, criterio='nombre')
@@ -58,21 +72,11 @@ total_metros = 0
 if(pos_origen is not None and pos_destino is not None):
     if(home.has_path(origen, destino, criterio='nombre') is not None):
         camino_mas_corto = home.dijkstra(origen, destino)
-        fin = destino
+        print('nodos del camino mas corto:')    
         while camino_mas_corto.size() > 0:
-            value = camino_mas_corto.pop()
-            # print(value[0])
-            if fin != value[0]:
-                index = home.search_vertice(value[0], criterio='nombre')
-                vertice = home.get_element_by_index(index)
-                #print(vertice[1])
-                for index in range(vertice[1].size()):
-                    aristas = vertice[1].get_element_by_index(index)
-                    total_metros= total_metros + aristas.peso
-                    
+            value = camino_mas_corto.pop() #value es un tupla que contine [vertice destino - peso - vertice origen]
+            if destino == value[0]:
+                total_metros = value[1]
+            print(value[0],value[1], value[2])
+    print()
     print(f'La cantidad de metros de clabe de red para conectar {origen} con {destino} son: {total_metros} mts')
-            
-
-
-
-    

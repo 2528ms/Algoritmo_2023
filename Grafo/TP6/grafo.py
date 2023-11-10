@@ -226,7 +226,7 @@ class Grafo():
     def kruskal(self):
         def buscar_en_bosque(bosque, buscado):
             for index, arbol in enumerate(bosque):
-                print(buscado, arbol)
+                # print(buscado, arbol)
                 if buscado in arbol:
                     return index
 
