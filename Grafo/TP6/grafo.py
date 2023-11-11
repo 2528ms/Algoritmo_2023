@@ -263,4 +263,37 @@ class Grafo():
                         bosque.append(vertice_ori+';'+vertice_des+';'+f'{arista[1][0]}-{arista[1][1]}-{arista[0]}')
 
         return bosque
-    
+ 
+    def kruskal_por_tipo(self, tipo):
+        def buscar_en_bosque(bosque, buscado):
+            for index, arbol in enumerate(bosque):
+                if buscado in arbol:
+                    return index
+
+        bosque = []  
+        aristas = Heap()
+        for index in range(self.size()):
+            vertice = self.get_element_by_index(index)
+            if vertice[0].tipo == tipo:
+                bosque.append(criterio_comparacion(vertice[0], 'nombre'))
+
+            aristas_adjacentes = vertice[1]
+            for i in range(aristas_adjacentes.size()):
+                arista = aristas_adjacentes.get_element_by_index(i)
+                aristas.arrive([criterio_comparacion(vertice[0], 'nombre'), arista.vertice], arista.peso, tipo)
+
+        resultado = []
+        while aristas.size() > 0:
+            arista = aristas.atention()
+            origen = buscar_en_bosque(bosque, criterio_comparacion(arista[1][0], 'nombre'))
+            destino = buscar_en_bosque(bosque, criterio_comparacion(arista[1][1], 'nombre'))
+
+            if origen is not None and destino is not None:
+                if origen != destino:
+                    tipo_arista = arista[2]  # Añadir el tipo al tercer elemento
+                    bosque.append(arista[1][1])
+                    origen_destino = arista[1]
+                    resultado.append(f'{origen_destino[0]} - {origen_destino[1]} ; {arista[0]} ; {tipo_arista}')  # Modificar para almacenar una tupla
+
+        return resultado
+
