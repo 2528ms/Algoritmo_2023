@@ -201,15 +201,17 @@ class BinaryTree:
 
         __preorden(self.root)
 
-    # def search_by_coincidence(self, value):
-    #     def __search_by_coincidence(root, value):
-    #         if root is not None:
-    #             if root.value.startswith(value):
-    #                 print(root.value)
-    #             __search_by_coincidence(root.left, value)
-    #             __search_by_coincidence(root.right, value)
+    def search_by_coincidence_2(self, value):
+        def __search_by_coincidence_2(root, value, result_list):
+            if root is not None:
+                if value.lower() in root.value.lower():
+                    result_list.append(root.value)
+                __search_by_coincidence_2(root.left, value, result_list)
+                __search_by_coincidence_2(root.right, value, result_list)
 
-    #     __search_by_coincidence(self.root, value)
+        result = []
+        __search_by_coincidence_2(self.root, value.lower(), result)
+        return result
 
     def search_by_coincidence(self, value):
         def __search_by_coincidence(root, value, result_list):

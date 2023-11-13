@@ -63,5 +63,37 @@ print('*** Punto D - mostrar toda la información de Yoda y Luke Skywalker ***')
 print()
 
 print('*** Punto E - mostrar todos los Jedi con ranking “Jedi Master” ***')
-search_ranking =  input('ingresar ranking ')
-pos = ranking_tree.search(search_ranking)
+datos = name_tree.inorden_return()
+for dato in datos:
+    pos = name_tree.search(dato).other_values
+    if get_value_from_file('jedis.txt', pos)[1] == "jedi master":
+        print(get_value_from_file('jedis.txt', pos)[0])
+
+print()
+print('*** Punto F - listar todos los Jedi que utilizaron sabe de luz color verde ***')
+name_tree.inorden_file_lightsaber('jedis.txt', 'green')
+
+print()
+print('*** PUNTO G - listar todos los Jedi cuyos maestros están en el archivo ***')
+datos = name_tree.inorden_return()
+for dato in datos:
+    pos = name_tree.search(dato).other_values
+    if get_value_from_file('jedis.txt', pos)[3] != '-':
+        print(get_value_from_file('jedis.txt', pos)[0])
+
+print()
+print('*** PUNTO H mostrar todos los Jedi de especie “Togruta” o “Cerean” ***')
+datos = name_tree.inorden_return()
+for dato in datos:
+    pos = name_tree.search(dato).other_values
+    if get_value_from_file('jedis.txt', pos)[2] in ["togruta", "cerean"]:
+        print(get_value_from_file('jedis.txt', pos)[0], get_value_from_file('jedis.txt', pos)[2])
+
+print()
+print('*** PUNTO I - listar los Jedi que comienzan con la letra A y los que contienen un “-” en su nombre ***')
+print('** Jedis con nombres comenzados con a **')
+name_tree.inorden_start_with('a')
+print('** Jedis que contienen - en su nombre **')
+test = name_tree.search_by_coincidence_2('-')
+for index in test:
+    print(index)
