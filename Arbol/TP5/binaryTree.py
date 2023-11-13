@@ -113,6 +113,18 @@ class BinaryTree:
                 __inorden(root.right)
 
         __inorden(self.root)
+    
+    def inorden_return(self):
+        def __inorden_return(root,result_list):
+            if root is not None:
+                __inorden_return(root.left,result_list)
+                result_list.append(root.value)
+                __inorden_return(root.right,result_list)
+
+        result = []
+        __inorden_return(self.root,result)
+        return result
+    
 
     def inorden_file(self, file_name):
         def __inorden_file(root, file_name):
@@ -189,15 +201,27 @@ class BinaryTree:
 
         __preorden(self.root)
 
+    # def search_by_coincidence(self, value):
+    #     def __search_by_coincidence(root, value):
+    #         if root is not None:
+    #             if root.value.startswith(value):
+    #                 print(root.value)
+    #             __search_by_coincidence(root.left, value)
+    #             __search_by_coincidence(root.right, value)
+
+    #     __search_by_coincidence(self.root, value)
+
     def search_by_coincidence(self, value):
-        def __search_by_coincidence(root, value):
+        def __search_by_coincidence(root, value, result_list):
             if root is not None:
                 if root.value.startswith(value):
-                    print(root.value)
-                __search_by_coincidence(root.left, value)
-                __search_by_coincidence(root.right, value)
+                    result_list.append(root.value)
+                __search_by_coincidence(root.left, value, result_list)
+                __search_by_coincidence(root.right, value, result_list)
 
-        __search_by_coincidence(self.root, value)
+        result = []
+        __search_by_coincidence(self.root, value, result)
+        return result
 
     def search(self, key):
         def __search(root, key):
@@ -280,3 +304,4 @@ class BinaryTree:
             return count
 
         return __contar_heroes(self.root)
+    
